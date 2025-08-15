@@ -4,11 +4,11 @@ Python package for generating **UAV (Unmanned Aerial Vehicle)** configurations, 
 
 ## Package Structure
 advanced_uav_conf/
-├── init.py          # Makes the folder a Python package; exposes main API  
-├── types.py             # Data classes and type definitions  
-├── geometry.py          # OpenVSP geometry creation and parameter setting  
-├── performance.py       # Placeholder performance analysis functions  
-└── design.py            # Main design_space workflow  
+├── init.py: Makes the folder a Python package; exposes main API  
+├── types.py: Data classes and type definitions  
+├── geometry.py: OpenVSP geometry creation and parameter setting  
+├── performance.py: Placeholder performance analysis functions  
+└── design.py: Main design_space workflow  
 
 ## Input / Output
 
