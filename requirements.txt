@@ -1,0 +1,4 @@
+numpy>=1.21
+pandas>=1.3
+smt>=1.2.0
+openvsp  # must be installed from the official OpenVSP source

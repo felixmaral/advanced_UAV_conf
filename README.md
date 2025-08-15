@@ -1,46 +1,64 @@
 # advanced_UAV_conf
 
-This repository contains a Python script for generating and evaluating **advanced UAV (Unmanned Aerial Vehicle)** configurations using parameterized geometry through the `opensvp` API and basic performance placeholders.
+Python package for generating **UAV (Unmanned Aerial Vehicle)** configurations, building their geometry in **OpenVSP**, and computing basic performance metrics (currently placeholders).
 
-## Overview
-The main function `DesignSpace(nconfig, Xlimits)`:
-1. Generates UAV design points using **Latin Hypercube Sampling (LHS)** from the `smt` library.
-2. Builds each configuration in `opensvp`:
-   - **Wing**: aspect ratio, taper, sweep, dihedral, area.
-   - **Tail**: aspect ratio, taper, sweep, dihedral, area.
-   - **Fuselage**: fore/mid/aft lengths, diameter.
-3. Updates the model and runs placeholder analyses:
-   - Aerodynamic performance
-   - Structural performance
-   - Radar cross section (RCS) performance
-   - Weight estimation
-4. Stores all design variables and computed metrics in a **Pandas DataFrame**.
+## Package Structure
+advanced_uav_conf/
+├── init.py          # Makes the folder a Python package; exposes main API  
+├── types.py             # Data classes and type definitions  
+├── geometry.py          # OpenVSP geometry creation and parameter setting  
+├── performance.py       # Placeholder performance analysis functions  
+└── design.py            # Main design_space workflow  
+
+## Input / Output
+
+**Input to `design_space`:**
+- `nconfig`: number of configurations to generate
+- `Xlimits`: list of `(min, max)` tuples for 14 design variables
+- Optional:
+  - `seed`: random seed for reproducible sampling
+  - `flow`: `FlowConditions` dataclass (Re, Mach, Alpha)
+
+**Output:**
+- **Pandas DataFrame** with:
+  - Design variables (wing, tail, fuselage parameters)
+  - Performance metrics (`cL`, `cD`, `cM`, `sigma_dBsm`, `Wstructure`, `Wempty`)
+  - Error messages if any geometry step fails
 
 ## Current Status
-🚧 **Paused** – Development is currently on hold.  
-The script runs and produces a DataFrame with mock performance results, but the analysis functions are placeholders and the integration with the UAV modeling API needs verification.
+⏸ **Paused** – The package runs end-to-end with placeholder functions for performance.  
+Integration with **OpenVSP** is in place but needs parameter name verification.  
+Real aerodynamic, structural, RCS, and weight calculations are pending.
 
-## Missing or Pending Work
-- **Real implementations** for:
-  - `AerodynamicsPerformance`
-  - `StructuralPerformance`
-  - `RadarCrossSectionPerformance`
-  - `Weights`
-- **Integration checks** with `opensvp`:
-  - Confirm import (`opensvp` vs `openvsp`)
-  - Validate parameter and group names (e.g., `"Aspect"`, `"WingGeom"`, `"XSec_0"`)
-- **Validation and error handling**:
-  - Ensure `len(Xlimits) == 14` and values are within valid ranges
-  - Handle geometry creation or update errors
-- **Reproducibility**:
-  - Add random seed for LHS
-- **Execution safety**:
-  - Move example call under `if __name__ == "__main__":` to prevent unintended execution on import
-- **Optional improvements**:
-  - Save generated designs and results to file
-  - Add docstrings, type hints, and a `requirements.txt`
+## Implemented
+- Modular design for maintainability
+- LHS sampling (`smt`) with reproducibility option
+- OpenVSP geometry creation (wing, tail, fuselage)
+- Clear DataFrame output with explicit columns
+- Error handling and parameter validation
+
+## Installation
+
+1. **Install Python dependencies:**
+```bash
+pip install -r requirements.txt
+
+2. **Install OpenVSP**  
+- Download and install from the official site: [https://openvsp.org/](https://openvsp.org/)  
+- Ensure the Python API (`openvsp`) is available in your environment  
 
 ## Example Usage
 ```python
-result = DesignSpace(10, [(0, 1) for _ in range(14)])
-print(result)
+from advanced_uav_conf import design_space, FlowConditions
+
+df = design_space(
+    nconfig=10,
+    Xlimits=[(0, 1)] * 14,
+    seed=42,
+    flow=FlowConditions(Re=1e6, Mach=0.8, Alpha=5)
+)
+print(df.head())
+
+## Acknowledgments
+This work is an independent implementation based on existing concepts in UAV configuration and analysis.  
+It is not affiliated with, nor derived from, any specific existing codebase.
