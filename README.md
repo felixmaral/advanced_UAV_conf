@@ -42,6 +42,7 @@ Real aerodynamic, structural, RCS, and weight calculations are pending.
 1. **Install Python dependencies:**
 ```bash
 pip install -r requirements.txt
+```
 
 2. **Install OpenVSP**  
 - Download and install from the official site: [https://openvsp.org/](https://openvsp.org/)  
@@ -58,6 +59,7 @@ df = design_space(
     flow=FlowConditions(Re=1e6, Mach=0.8, Alpha=5)
 )
 print(df.head())
+```
 
 ## Acknowledgments
 This work is an independent implementation based on existing concepts in UAV configuration and analysis.  
