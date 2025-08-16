@@ -1,6 +1,6 @@
 # advanced_UAV_conf
 
-Python package for generating **UAV (Unmanned Aerial Vehicle)** configurations, building their geometry in **OpenVSP**, and computing basic performance metrics (placeholders).
+Python package for generating **UAV (Unmanned Aerial Vehicle)** configurations, building their geometry in **OpenVSP**, and computing basic performance metrics (placeholders yet).
 
 ## Project Overview
 
