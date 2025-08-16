@@ -1,6 +1,20 @@
 # advanced_UAV_conf
 
-Python package for generating **UAV (Unmanned Aerial Vehicle)** configurations, building their geometry in **OpenVSP**, and computing basic performance metrics (currently placeholders).
+Python package for generating **UAV (Unmanned Aerial Vehicle)** configurations, building their geometry in **OpenVSP**, and computing basic performance metrics.
+
+## Project Overview
+
+**Advanced UAV Configurator** is a tool for **parametric exploration of UAV (Unmanned Aerial Vehicle) configurations** in an automated way.
+
+This system allows an aerospace engineer to:
+
+- Define a **design space** with key parameters for wing, tail, and fuselage.  
+- Generate multiple UAV configurations using systematic or random variations.  
+- Automatically evaluate basic aerodynamic metrics (lift, drag, moment) as well as structural and weight characteristics.  
+- Store the results in a **DataFrame and CSV files** for further analysis or integration into optimization workflows.  
+- Organize generated designs in the `./designs` folder, with the option to **name each experiment** for clarity.  
+
+This environment is particularly useful for **preliminary conceptual design studies** and for **comparing configurations** in the early phases of UAV projects.
 
 ## Package Structure
 advanced_uav_conf/  
