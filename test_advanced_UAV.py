@@ -47,7 +47,7 @@ Xlimits = [
 # ─────────────────────────────────────────────
 vsp.ClearVSPModel()
 df = design_space(
-    nconfig=2,
+    nconfig=100,
     Xlimits=Xlimits,
     seed=44,
     flow=FlowConditions(Re=1e6, Mach=0.8, Alpha=5.0)
@@ -58,7 +58,7 @@ df = design_space(
 # The DataFrame contains the design parameters + metrics
 # Automatically saved under ./designs with experiment name
 # ─────────────────────────────────────────────
-print(df)
+# print(df.head())  # Show first few rows of the DataFrame
 
 # Optional: uncomment to save also in this folder
 # df.to_csv("uav_designs.csv", index=False)
