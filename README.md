@@ -41,7 +41,6 @@ advanced_uav_conf/
 
 ## Current Status
 ⏸ **Paused** – The package runs end-to-end with placeholder functions for performance.  
-Integration with **OpenVSP** is in place but needs parameter name verification.  
 Real aerodynamic, structural, RCS, and weight calculations are pending.
 
 ## Implemented
@@ -67,8 +66,8 @@ pip install -r requirements.txt
 from advanced_uav_conf import design_space, FlowConditions
 
 df = design_space(
-    nconfig=10,
-    Xlimits=[(0, 1)] * 14,
+    nconfig=100,
+    Xlimits=[(0, 1)] * 14, # Example
     seed=42,
     flow=FlowConditions(Re=1e6, Mach=0.8, Alpha=5)
 )
@@ -76,5 +75,5 @@ print(df.head())
 ```
 
 ## Acknowledgments
-This work is an independent implementation based on existing concepts in UAV configuration and analysis.  
+This work is an independent implementation.  
 It is not affiliated with, nor derived from, any specific existing codebase.
